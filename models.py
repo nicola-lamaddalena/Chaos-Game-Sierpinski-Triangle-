@@ -1,6 +1,7 @@
-import random
+from numpy.random import choice, randint
 import turtle
 
+turtle.tracer(0, 0)
 t = turtle.Turtle()
 t.hideturtle()
 
@@ -47,21 +48,23 @@ if __name__ == "__main__":
     for i in verteces:
         i.draw()
 
-    first_point = Point(
-        random.randint(0, 500), random.randint(500, 500), point_size, point_color
-    )
+    first_point = Point(randint(0, 500), randint(0, 500), point_size, point_color)
     first_point.draw()
 
-    first_choice: Point = random.choice(verteces)
+    first_choice: Point = choice(verteces)
     first_dot_pos: Point = first_point.mid_point(first_choice)
     first_dot_pos.draw()
 
-    count = 0
-    while count < 30_000:
-        new_vertex = random.choice(verteces)
+    point_list = []
+    for _ in range(30_000):
+        new_vertex = choice(verteces)
         new_dot_pos: Point = first_dot_pos.mid_point(new_vertex)
-        new_dot_pos.draw()
+        point_list.append(new_dot_pos)
         first_dot_pos = new_dot_pos
-        count += 1
+
+    for point in point_list:
+        point.draw()
+        turtle.update()
+        turtle.delay(0.1)
 
     turtle.mainloop()
