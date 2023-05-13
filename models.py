@@ -36,19 +36,17 @@ class Point:
 if __name__ == "__main__":
     vertex_size = 5
     vertex_color = "red"
-    point_size = 3
-    point_color = "black"
 
     verteces: list[Point] = [
         Point(-250, -200, vertex_size, vertex_color),
         Point(250, -200, vertex_size, vertex_color),
-        Point(0, 200, vertex_size, vertex_color),  # y should be 433
+        Point(0, 200, vertex_size, vertex_color),
     ]
 
     for i in verteces:
         i.draw()
 
-    first_point = Point(randint(0, 500), randint(0, 500), point_size, point_color)
+    first_point = Point(randint(0, 500), randint(0, 500))
     first_point.draw()
 
     first_choice: Point = choice(verteces)
@@ -65,6 +63,6 @@ if __name__ == "__main__":
     for point in point_list:
         point.draw()
         turtle.update()
-        turtle.delay(0.1)
+        turtle.delay(1)
 
     turtle.mainloop()
