@@ -38,9 +38,9 @@ if __name__ == "__main__":
     vertex_color = "red"
 
     verteces: list[Point] = [
-        Point(-250, -200, vertex_size, vertex_color),
-        Point(250, -200, vertex_size, vertex_color),
-        Point(0, 200, vertex_size, vertex_color),
+        Point(-200, -100, vertex_size, vertex_color),
+        Point(0, 300, vertex_size, vertex_color),
+        Point(200, -100, vertex_size, vertex_color),
     ]
 
     for i in verteces:
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     first_dot_pos.draw()
 
     point_list = []
-    for _ in range(30_000):
+    for _ in range(10_000):
         new_vertex = choice(verteces)
         new_dot_pos: Point = first_dot_pos.mid_point(new_vertex)
         point_list.append(new_dot_pos)
@@ -64,5 +64,3 @@ if __name__ == "__main__":
         point.draw()
         turtle.update()
         turtle.delay(1)
-
-    turtle.mainloop()
